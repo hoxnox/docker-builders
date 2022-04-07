@@ -1,4 +1,4 @@
-FROM docker.acme.com/builder:base
+FROM builder:base
 
 # adding specigic compiler and making basic conan setup
 COPY i386-pc-linux-musl.tar.gz /opt
