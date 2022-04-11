@@ -18,7 +18,7 @@ build_type=Release
 [env]
 PATH=$toolchain/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 CONAN_CMAKE_FIND_ROOT_PATH=$toolchain/$processor-pc-linux-musl/sysroot
-CONAN_CMAKE_SYSTEM_NAME=Generic
+CONAN_CMAKE_SYSTEM_NAME=Linux
 #LD_LIBRARY_PATH=$toolchain/$processor-pc-linux-musl/sysroot/lib:$toolchain/$processor-pc-linux-musl/lib64
 CHOST=$target_host
 AR=$target_host-ar
