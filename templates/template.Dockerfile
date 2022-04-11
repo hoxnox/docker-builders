@@ -13,6 +13,7 @@ RUN tar -C /opt -zxf /opt/${PROCESSOR}-pc-linux-musl.tar.gz && rm /opt/${PROCESS
     mv /opt/*.tpl /opt/${PROCESSOR}-pc-linux-musl/ && \
     /opt/fixpath.sh && rm /opt/fixpath.sh && \
     cp /opt/${PROCESSOR}-pc-linux-musl/conan.profile /root/.conan/profiles/default
+ENV PATH="/opt/${PROCESSOR}-pc-linux-musl/bin:${PATH}"
 
 # standalone env setup
 RUN conan remote remove conancenter && \
