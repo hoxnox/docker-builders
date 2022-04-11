@@ -16,6 +16,7 @@ RUN apk add flex                                 && \
     apk add make                                 && \
     apk add cmake                                && \
     apk add git                                  && \
+    apk add patch                                && \
     apk add python3                              && \
     wget https://bootstrap.pypa.io/get-pip.py    && \
     python3 get-pip.py                           && \
