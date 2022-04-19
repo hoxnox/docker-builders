@@ -21,4 +21,4 @@ RUN apk add flex                                 && \
     wget https://bootstrap.pypa.io/get-pip.py    && \
     python3 get-pip.py                           && \
     rm get-pip.py                                && \
-    pip install conan
+    pip install conan pyelftools

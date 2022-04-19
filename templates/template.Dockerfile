@@ -8,6 +8,10 @@ COPY fixpath.sh /opt
 RUN tar -C /opt -zxf /opt/${PROCESSOR}-pc-linux-musl.tar.gz && rm /opt/${PROCESSOR}-pc-linux-musl.tar.gz && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-gcc /usr/local/bin/gcc && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-g++ /usr/local/bin/g++ && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-ar /usr/local/bin/ar && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-objdump /usr/local/bin/objdump && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libanl.a && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libbsd.a && \
     conan profile new --detect default && \
     conan config set storage.download_cache=/conan-cache && \
     mv /opt/*.tpl /opt/${PROCESSOR}-pc-linux-musl/ && \
