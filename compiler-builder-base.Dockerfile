@@ -3,6 +3,7 @@ FROM alpine
 # basic system packages
 RUN apk add build-base                           && \
     apk add flex                                 && \
+    apk add bison                                && \
     apk add texinfo                              && \
     apk add xz                                   && \
     apk add help2man                             && \
@@ -27,5 +28,10 @@ RUN apk add python3                              && \
     rm get-pip.py
 
 # crosstool-ng
-RUN apk add crosstool-ng --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
-
+RUN wget https://github.com/crosstool-ng/crosstool-ng/archive/refs/heads/master.tar.gz && \
+    tar -xvf master.tar.gz && \
+    cd crosstool-ng-master && \
+    ./bootstrap; \
+    ./configure && \
+    make install && \
+    cd .. && rm -r crosstool-ng-master

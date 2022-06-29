@@ -11,7 +11,7 @@ arch_build=x86_64
 os=Linux
 arch=$processor
 compiler=gcc
-compiler.version=11
+compiler.version=12
 compiler.libcxx=libstdc++11
 build_type=Release
 
