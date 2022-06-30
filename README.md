@@ -24,3 +24,8 @@ cp templates/qemu-binfmt-${PROCESSOR} ${PROCESSOR}/
 
 Check ~/.conan/settings.tml and verify architecture march in <arch>/conan.profile.tpl (arch variable)
 
+
+There are troubles with i386 and m4 package. The first thing - linking with libatomic.a is
+missing. Can be fixed by adding
+LIBS=/opt/i386-pc-linux-musl/i386-pc-linux-musl/lib/libatomic.a to the profile. Another
+thing - it uses wrong `host_canonical_name`.
