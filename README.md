@@ -12,6 +12,9 @@ Building qemu-static:
 
 https://github.com/ziglang/qemu-static
 
+Make qemu-binfmt script (use /etc/init.d/qemu-binfmt) and get static qemu-{arch}, copy
+entrypoint.
+
 Building builder
 
 ```
