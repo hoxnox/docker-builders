@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.20
 
 # basic system packages
 RUN apk add flex                                 && \
@@ -19,6 +19,6 @@ RUN apk add flex                                 && \
     apk add patch                                && \
     apk add python3                              && \
     wget https://bootstrap.pypa.io/get-pip.py    && \
-    python3 get-pip.py                           && \
+    python3 get-pip.py --break-system-packages   && \
     rm get-pip.py                                && \
-    pip install conan pyelftools
+    pip install --break-system-packages conan pyelftools

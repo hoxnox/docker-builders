@@ -18,10 +18,10 @@ entrypoint.
 Building builder
 
 ```
-docker build -t builder:base -f base.Dockerfile .
+docker build -t builder_base:0.2.0 -f base.Dockerfile .
 for i in templates/*.tpl; do sed 's/${PROCESSOR}/mips/g' $i > mips/`basename $i`; done
 sed 's/${PROCESSOR}/mips/g' templates/template.Dockerfile > mips/mips-pc-linux-musl.Dockerfile
-docker build -t builder:mips -f mips-pc-linux-musl.Dockerfile .
+docker build -t builder_mips:0.2.0 -f mips-pc-linux-musl.Dockerfile .
 cp templates/qemu-binfmt-${PROCESSOR} ${PROCESSOR}/
 ```
 

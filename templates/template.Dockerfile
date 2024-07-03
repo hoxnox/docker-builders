@@ -1,4 +1,4 @@
-FROM builder:base
+FROM builder_base:0.2.0
 
 # adding specigic compiler and making basic conan setup
 COPY ${PROCESSOR}/${PROCESSOR}-pc-linux-musl.tar.gz /opt
@@ -14,11 +14,11 @@ RUN tar -C /opt -zxf /opt/${PROCESSOR}-pc-linux-musl.tar.gz && rm /opt/${PROCESS
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-objdump /usr/local/bin/objdump && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libanl.a && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libbsd.a && \
-    conan profile new --detect default && \
-    conan config set storage.download_cache=/conan-cache && \
+    conan profile detect && \
+    echo 'core.sources:download_cache=/conan-cache' >> ~/.conan2/global.conf && \
     mv /opt/*.tpl /opt/${PROCESSOR}-pc-linux-musl/ && \
     /opt/fixpath.sh && rm /opt/fixpath.sh && \
-    cp /opt/${PROCESSOR}-pc-linux-musl/conan.profile /root/.conan/profiles/default && \
+    cp /opt/${PROCESSOR}-pc-linux-musl/conan.profile /root/.conan2/profiles/default && \
     touch /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/include/execinfo.h
 ENV PATH="/opt/${PROCESSOR}-pc-linux-musl/bin:${PATH}"
 COPY entrypoint /opt
@@ -27,5 +27,5 @@ ENTRYPOINT ["/opt/entrypoint"]
 
 # standalone env setup
 RUN conan remote remove conancenter && \
-    conan remote add repo https://repo.example.com False
+    conan remote add --insecure repo https://repo.example.com
 
