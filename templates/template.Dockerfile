@@ -12,7 +12,9 @@ RUN tar -C /opt -zxf /opt/${PROCESSOR}-pc-linux-musl.tar.gz && rm /opt/${PROCESS
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-g++ /usr/local/bin/g++ && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-ar /usr/local/bin/ar && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-objdump /usr/local/bin/objdump && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/bin/${PROCESSOR}-pc-linux-musl-strip /usr/local/bin/strip && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libanl.a && \
+    ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libnsl.a && \
     ln -s /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libc.a /opt/${PROCESSOR}-pc-linux-musl/${PROCESSOR}-pc-linux-musl/sysroot/usr/lib/libbsd.a && \
     conan profile detect && \
     echo 'core.sources:download_cache=/conan-cache' >> ~/.conan2/global.conf && \
