@@ -6,7 +6,9 @@ ln -s /mnt/compiler-builder-sources /src
 ln -s /mnt /x-tools
 mkdir ~/tmp && cd ~/tmp
 cp /mnt/mips-pc-linux-musl.crosstool-ng .config
+ct-ng menuconfig
 ct-ng build
+tar -czvf mips-pc-linux-musl.tar.gz mips-pc-linux-musl
 
 Building qemu-static:
 
@@ -19,9 +21,14 @@ Building builder
 
 ```
 docker build -t builder_base:0.2.0 -f base.Dockerfile .
+mkdir mips
+cp mips-pc-linux-musl.tar.gz mips
 for i in templates/*.tpl; do sed 's/${PROCESSOR}/mips/g' $i > mips/`basename $i`; done
+cp qemu-mips mips
+cp qemu-binfmt mips
+cp templates/entrypoint mips
 sed 's/${PROCESSOR}/mips/g' templates/template.Dockerfile > mips/mips-pc-linux-musl.Dockerfile
-docker build -t builder_mips:0.2.0 -f mips-pc-linux-musl.Dockerfile .
+docker build -t builder-mips:0.2.0 -f mips-pc-linux-musl.Dockerfile .
 cp templates/qemu-binfmt-${PROCESSOR} ${PROCESSOR}/
 ```
 
