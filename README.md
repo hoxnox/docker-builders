@@ -23,13 +23,13 @@ Building builder
 docker build -t builder_base:0.2.0 -f base.Dockerfile .
 mkdir mips
 cp mips-pc-linux-musl.tar.gz mips
-for i in templates/*.tpl; do sed 's/${PROCESSOR}/mips/g' $i > mips/`basename $i`; done
+for i in templates/*.tpl; do sed 's/|ARCH|/mips/g' $i > mips/`basename $i`; done
 cp qemu-mips mips
 cp qemu-binfmt mips
 cp templates/entrypoint mips
-sed 's/${PROCESSOR}/mips/g' templates/template.Dockerfile > mips/mips-pc-linux-musl.Dockerfile
+sed 's/|ARCH|/mips/g' templates/template.Dockerfile > mips/mips-pc-linux-musl.Dockerfile
 docker build -t builder-mips:0.2.0 -f mips-pc-linux-musl.Dockerfile .
-cp templates/qemu-binfmt-${PROCESSOR} ${PROCESSOR}/
+cp templates/qemu-binfmt-|ARCH| |ARCH|/
 ```
 
 Check ~/.conan/settings.tml and verify architecture march in <arch>/conan.profile.tpl (arch variable)

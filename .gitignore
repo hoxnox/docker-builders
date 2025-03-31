@@ -1,0 +1,10 @@
+i386
+x86_64
+arm
+aarch64
+mips
+mips64
+ppc
+ppc64
+compiler-builder-sources
+powerpc
