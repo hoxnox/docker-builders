@@ -1,5 +1,6 @@
-FROM alpine:3.20
-
+FROM alpine:3.22
+WORKDIR /
+RUN sed -i 's|dl-cdn.alpinelinux.org/alpine|mirror.yandex.ru/mirrors/alpine|' /etc/apk/repositories
 # basic system packages
 RUN apk add flex                                 && \
     apk add texinfo                              && \

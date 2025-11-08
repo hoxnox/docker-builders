@@ -1,4 +1,4 @@
-FROM builder_base:0.2.0
+FROM builder_base:0.3.0
 
 # adding specigic compiler and making basic conan setup
 COPY |ARCH|/|ARCH|-pc-linux-musl.tar.gz /opt

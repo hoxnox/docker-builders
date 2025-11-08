@@ -1,6 +1,6 @@
 {% set target_arch = "|ARCH|" %}
-{% set toolchain = "/opt/{{ target_arch }}-pc-linux-musl" %}
-{% set target_host = "{{ target_arch }}-pc-linux-musl" %}
+{% set toolchain = "/opt/|ARCH|-pc-linux-musl" %}
+{% set target_host = "|ARCH|-pc-linux-musl" %}
 {% set cc_compiler = "gcc" %}
 {% set cxx_compiler = "g++" %}
 
